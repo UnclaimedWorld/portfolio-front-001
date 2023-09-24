@@ -18,3 +18,7 @@ $comp: 'path', 'rect', 'circle';
         }
     }
 }
+
+html, body, #root {
+    height: 100%;
+}
