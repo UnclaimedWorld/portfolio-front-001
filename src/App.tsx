@@ -1,15 +1,16 @@
 import AppIcon from "./components/AppIcon";
+import logoUrl from  "./assets/img/logo.svg";
 
 export const App = () => {
   const text = 'отправиться туда отправиться туда ';
   const elems = text.split('').map((s, idx) => {
-    return <div className="h-[60px] absolute left-1/2 origin-[50%_100%] text-[9px] font-extrabold leading-3 letter-spacing-[2.43px] uppercase" style={{transform: `translateX(-50%) rotate(${idx * (360 / text.length)}deg)`, }}>{s}</div>
+    return <div className="h-[60px] absolute left-1/2 origin-[50%_100%] text-[9px] font-extrabold leading-3 letter-spacing-[2.43px] uppercase" key={idx} style={{transform: `translateX(-50%) rotate(${idx * (360 / text.length)}deg)`, }}>{s}</div>
   });
 
   return (
     <main className="w-full p-[12px] bg-[#141414] h-full flex">
       <aside className="inline-flex flex-col items-start pl-[20px] pr-[10px] py-5 relative self-stretch flex-[0_0_auto] w-[350px]">
-        <p className="text-[#8ae516] mb-15 text-[32px] leading-[1]">DAMEER</p>
+        <img className="text-white w-[75px] h-5 block mb-17" alt="logo" src={logoUrl}/>
         <nav>
           <ul className="flex flex-col gap-8">
             <li className="flex items-center gap-[16px]">
@@ -67,7 +68,7 @@ export const App = () => {
           <p className="text-[12px] leading-[18px] text-[#ccc] mb-4">
           Ясность нашей позиции очевидна: консультация с широким активом создаёт предпосылки для новых предложений. Есть над чем задуматься: независимые государства могут быть заблокированы в рамках своих собственных рациональных ограничений. Как принято считать, акционеры крупнейших компаний в равной степени предоставлены сами себе.
           </p>
-          <time className="mix-blend-overlay text-[14px] leading-5" datetime="2023-09-12T14:00:00">12.09.2023 / 14:40</time>
+          <time className="mix-blend-overlay text-[14px] leading-5 font-sub" dateTime="2023-09-12T14:00:00">12.09.2023 / 14:40</time>
         </article>
       </div>
     </main>

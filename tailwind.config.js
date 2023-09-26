@@ -5,7 +5,8 @@ export default {
   ],
   theme: {
     fontFamily: {
-      sans: 'Inter, sans-serif'
+      sans: 'Manrope, Helvetica, sans-serif',
+      sub: 'SometypeMono, monospace, sans-serif'
     },
     extend: {
       colors: {
@@ -22,6 +23,7 @@ export default {
         '7.5': '1.875rem',
         13: '3.25rem',
         15: '3.75rem',
+        17: '4.25rem'
       }
     },
   },
