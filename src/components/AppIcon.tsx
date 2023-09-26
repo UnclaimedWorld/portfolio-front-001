@@ -1,24 +1,29 @@
-import tw from "tailwind-styled-components";
-import { useEffect, useState } from "react";
+// Проверить как компонент будет себя вести в асинхронном окружении
 import { DefaultProps } from "../types/default-props";
-import { ReactComponent as AB } from "../assets/icons/user.svg";
 
-export default function AppIcon(props: DefaultProps & { icon: string, size?: number }) {
-    const [icon, setIcon] = useState(null);
+type ReactSVGComponent = React.SVGProps<SVGSVGElement>;
 
-    async function getIcon() {
-        const module = await import(`../assets/icons/${props.icon}.svg`);
-        setIcon(module.ReactComponent);
-    }
+// Импортируем все иконки из папок
+const importedIcons = import.meta.glob<true, string, ReactSVGComponent>('../assets/icons/*.svg', { eager: true, import: 'ReactComponent' });
+// Добавляем иконки в словарь reactIcons
+const reactIcons = Object.entries(importedIcons).reduce<Record<string, ReactSVGComponent>>((acc, [path, ReactComponent]) => {
+    // вытаскиваем имя файла из пути до файла
+    // Был вариант прописать заранее путь, но vite не поддерживает переменные для глобов
+    const name = path.slice(path.lastIndexOf('/') + 1, path.lastIndexOf('.'));
+    acc[name] = ReactComponent;
+    return acc;
+}, {});
 
-    useEffect(() => {
-        getIcon();
-    });
-    if(!icon) {
-        return <div className={props.className || ''} style={{width: (props.size || 20) + 'px', height: (props.size || 20) + 'px'}}></div>
-    }
+interface AppIconProps extends DefaultProps {
+    icon: string;
+    size?: number|string;
+}
 
-    return <div className={'svg-icon ' + (props.className || '') }>{icon}</div>;
+export default function AppIcon(props: AppIconProps) {
+    const Icon = reactIcons[props.icon];
+    const sizePX = (props.size || 24) + 'px';
+    // Такой подход должен снизить количество запросов от клиента
+    return <Icon className={'svg-icon ' + props.className} width={sizePX} height={sizePX}/>
     // svg-icon
     // w-[22px]
 }
