@@ -22,3 +22,7 @@ $comp: 'path', 'rect', 'circle';
 html, body, #root {
     height: 100%;
 }
+
+body {
+    @apply bg-[#141414];
+}

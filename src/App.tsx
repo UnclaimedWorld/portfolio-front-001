@@ -1,89 +1,76 @@
-import React from "react";
 import AppIcon from "./components/AppIcon";
 
 export const App = () => {
+  const text = 'отправиться туда отправиться туда ';
+  const elems = text.split('').map((s, idx) => {
+    return <div className="h-[60px] absolute left-1/2 origin-[50%_100%] text-[9px] font-extrabold leading-3 letter-spacing-[2.43px] uppercase" style={{transform: `translateX(-50%) rotate(${idx * (360 / text.length)}deg)`, }}>{s}</div>
+  });
+
   return (
-    <div className="flex flex-col items-start gap-[10px] p-[12px] relative bg-[#141414] h-full">
-      <div className="gap-[32px] flex items-center justify-center relative flex-[0_0_auto] flex-grow">
-        <div className="inline-flex flex-col items-start pl-[20px] pr-0 py-[20px] relative self-stretch flex-[0_0_auto]">
-          <div className="gap-[10px] pt-0 pb-[60px] px-0 inline-flex items-center justify-center relative flex-[0_0_auto]">
-            <div className="relative w-fit mt-[-1.00px] [font-family:'Teko-Regular',Helvetica] font-normal text-[#8ae516] text-[32px] tracking-[0] leading-[32px] whitespace-nowrap">
-              DAMEER
-            </div>
-          </div>
-          <div className="inline-flex flex-col items-start justify-center gap-[32px] relative flex-[0_0_auto]">
-            <div className="inline-flex items-center gap-[16px] relative flex-[0_0_auto]">
-              <AppIcon className="!relative !w-[24px] !h-[24px] text-white" size={24} icon="Layers"/>
-              <div className="relative w-fit [font-family:'Manrope-Medium',Helvetica] font-medium text-[#666666] text-[14px] tracking-[0] leading-[20px] whitespace-nowrap">
-                Проекты
-              </div>
-            </div>
-            <div className="inline-flex items-center gap-[16px] relative flex-[0_0_auto]">
-              <AppIcon className="!relative !w-[24px] !h-[24px] text-white" size={24} icon="Documents"/>
-              <div className="relative w-fit [font-family:'Manrope-Medium',Helvetica] font-medium text-[#666666] text-[14px] tracking-[0] leading-[20px] whitespace-nowrap">
-                Заметки
-              </div>
-            </div>
-            <div className="inline-flex items-center gap-[16px] relative flex-[0_0_auto]">
-              <AppIcon className="!relative !w-[24px] !h-[24px] text-white" size={24} icon="ParagraphQuote"/>
-              <div className="relative w-fit [font-family:'Manrope-Medium',Helvetica] font-medium text-[#666666] text-[14px] tracking-[0] leading-[20px] whitespace-nowrap">
-                Блог
-              </div>
-            </div>
-            <div className="inline-flex items-center gap-[16px] relative flex-[0_0_auto]">
-              <AppIcon className="!relative !w-[24px] !h-[24px] text-white" size={24} icon="UserProfile"/>
-              <div className="relative w-fit [font-family:'Manrope-Medium',Helvetica] font-medium text-[#666666] text-[14px] tracking-[0] leading-[20px] whitespace-nowrap">
-                Обо мне
-              </div>
-            </div>
-            <div className="inline-flex items-center gap-[16px] relative flex-[0_0_auto]">
-              <AppIcon className="!relative !w-[24px] !h-[24px] text-white" size={24} icon="Setting1"/>
-              <div className="relative w-fit [font-family:'Manrope-Medium',Helvetica] font-medium text-[#666666] text-[14px] tracking-[0] leading-[20px] whitespace-nowrap">
-                Настройки
-              </div>
-            </div>
-          </div>
-          <div className="relative flex-1 self-stretch w-full grow" />
-          <div className="flex w-[320px] items-center gap-[20px] pt-0 pb-[20px] px-[40px] relative flex-[0_0_auto]">
-            <div className="relative w-fit mt-[-1.00px] [font-family:'Sometype_Mono-Regular',Helvetica] font-normal text-[#666666] text-[14px] tracking-[0] leading-[20px] whitespace-nowrap">
-              2018
-            </div>
-            <img className="relative flex-1 grow h-px object-cover" alt="Line" src="line-6.svg" />
-            <div className="relative w-fit mt-[-1.00px] [font-family:'Sometype_Mono-Regular',Helvetica] font-normal text-[#666666] text-[14px] tracking-[0] leading-[20px] whitespace-nowrap">
-              2023
-            </div>
-          </div>
-          <div className="relative w-[320px] h-[84px] bg-[#1f1f1f] rounded-[80px] overflow-hidden">
-            <div className="inline-flex items-center gap-[16px] relative top-[12px] left-[12px]">
-              <div className="relative w-[62px] h-[62px] mt-[-1.00px] mb-[-1.00px] ml-[-1.00px] rounded-[60px] overflow-hidden border border-solid border-[#ffffff33]">
-                <img className="absolute w-[60px] h-[60px] top-0 left-0 object-cover" alt="Image" src="image-2.png" />
-              </div>
-              <div className="inline-flex flex-col items-start gap-[4px] relative flex-[0_0_auto]">
-                <div className="relative w-fit mt-[-1.00px] [font-family:'Manrope-SemiBold',Helvetica] font-semibold text-white text-[16px] tracking-[0] leading-[24px] whitespace-nowrap">
-                  Дамир Халимов
-                </div>
-                <div className="relative w-fit [font-family:'Manrope-Regular',Helvetica] font-normal text-[#666666] text-[14px] tracking-[0] leading-[20px] whitespace-nowrap">
-                  Front-end разработчик
-                </div>
-              </div>
-            </div>
-          </div>
+    <main className="w-full p-[12px] bg-[#141414] h-full flex">
+      <aside className="inline-flex flex-col items-start pl-[20px] pr-[10px] py-5 relative self-stretch flex-[0_0_auto] w-[350px]">
+        <p className="text-[#8ae516] mb-15 text-[32px] leading-[1]">DAMEER</p>
+        <nav>
+          <ul className="flex flex-col gap-8">
+            <li className="flex items-center gap-[16px]">
+              <AppIcon className="text-white" icon="layers"/>
+              <p className="font-medium text-[#666] text-[14px] leading-5">Проекты</p>
+            </li>
+          </ul>
+        </nav>
+        <div className="w-full mt-auto flex items-center mb-5 px-10 text-[#666] text-[14px] leading-5">
+          <p>2018</p>
+          <span className="flex-grow mx-5 h-[1px] bg-current"></span>
+          <p>2023</p>
         </div>
-        <div className="flex items-start gap-[12px] relative flex-[0_0_auto]">
-          <div className="flex flex-col items-center justify-center px-[12px] py-[19px] relative flex-[0_0_auto] bg-[#1e1e1e] rounded-[40px] overflow-hidden">
-            <img className="relative w-[443px] h-[615px] object-cover" alt="Image" src="image-9.png" />
-            <div className="flex flex-col w-[476px] h-[240px] items-start gap-[20px] p-[40px] relative bg-[#ffffffe6] rounded-[20px] border border-solid backdrop-blur-3xl backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(64px)_brightness(100%)]">
-              <div className="relative w-[405px] mt-[-1.00px] mr-[-9.00px] [font-family:'Manrope-SemiBold',Helvetica] font-semibold text-black text-[36px] tracking-[-0.72px] leading-[44px]">
-                Тут мои заметки
-              </div>
-              <p className="relative w-[405px] mr-[-9.00px] [font-family:'Manrope-Regular',Helvetica] font-normal text-[#666666] text-[16px] tracking-[-0.32px] leading-[24px]">
-                Пишу о всякой хуете касаемо языков программирования и разные конспекты для себя чтобы казаться умнее
-              </p>
+        <header className="bg-[#1f1f1f] rounded-[32px] p-3">
+          <div className="flex items-center gap-[16px] mb-15">
+            <img className="w-[62px] h-[62px] border border-white/20 object-cover rounded-full" alt="Image" src="/img/temp/sylvanas.png" />
+            <div>
+              <h2 className="font-semibold text-white leading-6 mb-1">Дамир Халимов</h2>
+              <h1 className="text-[#666] text-[14px] leading-[20px]">Front-end разработчик</h1>
             </div>
           </div>
-        </div>
+          <p className="text-[14px] leading-5 text-[#CCC] mb-6">
+            Для современного мира существующая теория, а также свежий взгляд на привычные вещи — безусловно открывает новые горизонты для новых принципов формирования материально-технической и кадровой базы.
+          </p>
+          <button className="py-3 w-full rounded-full bg-[#8BE517] border-0 text-normal leading-6 text-black flex items-center justify-center">
+            <AppIcon className="mr-2" icon="telegram"/>
+            Напишите в телеграм
+          </button>
+        </header>
+      </aside>
+      <section className="flex items-start gap-[12px] h-full">
+        <article className="flex flex-col items-center justify-end px-[12px] py-[19px] bg-[#1e1e1e] rounded-[40px] h-full w-[500px]">
+          <img className="w-full h-0 flex-grow object-cover" alt="Image" src="/img/temp/image-01.png" />
+          <div className="w-full mb-8 p-10 pb-0 h-60 bg-white/90 rounded-[20px] border border-white/90 backdrop-blur-3xl backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(64px)_brightness(100%)] text-black">
+            <h2 className="font-semibold text-[36px] tracking-[-0.72px] leading-[44px] mb-5">
+              Тут мои заметки
+            </h2>
+            <p className="text-[#666] tracking-[-0.32px] leading-[24px]">
+              Пишу о всякой хуете касаемо языков программирования и разные конспекты для себя чтобы казаться умнее
+            </p>
+          </div>
+
+          <div className="w-[120px] h-[120px] text-[#8be517] relative">
+            <AppIcon className="absolute w-15 h-15 top-1/2 left-1/2 -ml-7.5 -mt-7.5" icon="Arrow"/>
+            <div className="bg-black h-[1px] w-[1px] absolute top-1/2 left-1/2 z-10"></div>
+            <div className="relative w-full h-full origin-center animate-[spin_infinite_linear_20s]">
+              {elems}
+            </div>
+          </div>
+        </article>
+      </section>
+      <div>
+        <article className="p-5 rounded-[20px] bg-[#4D3426] text-white w-1/5 min-w-[320px]">
+          <h3 className="text-[20px] font-bold leading-6 tracking-[-0.4px] mb-4">JavaScript</h3>
+          <p className="text-[12px] leading-[18px] text-[#ccc] mb-4">
+          Ясность нашей позиции очевидна: консультация с широким активом создаёт предпосылки для новых предложений. Есть над чем задуматься: независимые государства могут быть заблокированы в рамках своих собственных рациональных ограничений. Как принято считать, акционеры крупнейших компаний в равной степени предоставлены сами себе.
+          </p>
+          <time className="mix-blend-overlay text-[14px] leading-5" datetime="2023-09-12T14:00:00">12.09.2023 / 14:40</time>
+        </article>
       </div>
-    </div>
+    </main>
   );
 };
 
