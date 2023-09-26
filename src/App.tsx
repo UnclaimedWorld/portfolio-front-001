@@ -1,35 +1,21 @@
-import AppIcon from "./components/AppIcon";
+import tw from "./helpers/tw";
+import SectionPreview from "./SectionPreview/SectionPreview";
 import Sidebar from "./Sidebar/Sidebar";
 
-export const App = () => {
-  const text = 'отправиться туда отправиться туда ';
-  const elems = text.split('').map((s, idx) => {
-    return <div className="h-[60px] absolute left-1/2 origin-[50%_100%] text-[9px] font-extrabold leading-3 letter-spacing-[2.43px] uppercase" key={idx} style={{transform: `translateX(-50%) rotate(${idx * (360 / text.length)}deg)`, }}>{s}</div>
-  });
+const Main = tw.main`
+  w-full 
+  p-[12px]
+  bg-[#141414] 
+  h-full 
+  flex
+`;
 
+export const App = () => {
   return (
-    <main className="w-full p-[12px] bg-[#141414] h-full flex">
+    <Main>
       <Sidebar/>
       <section className="flex items-start gap-[12px] h-full">
-        <article className="flex flex-col items-center justify-end px-[12px] py-[19px] bg-[#1e1e1e] rounded-[40px] h-full w-[500px]">
-          <img className="w-full h-0 flex-grow object-cover" alt="Image" src="/img/temp/image-01.png" />
-          <div className="w-full mb-8 p-10 pb-0 h-60 bg-white/90 rounded-[20px] border border-white/90 backdrop-blur-3xl backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(64px)_brightness(100%)] text-black">
-            <h2 className="font-semibold text-[36px] tracking-[-0.72px] leading-[44px] mb-5">
-              Тут мои заметки
-            </h2>
-            <p className="text-[#666] tracking-[-0.32px] leading-[24px]">
-              Пишу о всякой хуете касаемо языков программирования и разные конспекты для себя чтобы казаться умнее
-            </p>
-          </div>
-
-          <div className="w-[120px] h-[120px] text-[#8be517] relative">
-            <AppIcon className="absolute w-15 h-15 top-1/2 left-1/2 -ml-7.5 -mt-7.5" icon="Arrow"/>
-            <div className="bg-black h-[1px] w-[1px] absolute top-1/2 left-1/2 z-10"></div>
-            <div className="relative w-full h-full origin-center animate-[spin_infinite_linear_20s]">
-              {elems}
-            </div>
-          </div>
-        </article>
+        <SectionPreview/>
       </section>
       <div>
         <article className="p-5 rounded-[20px] bg-[#4D3426] text-white w-1/5 min-w-[320px]">
@@ -40,7 +26,7 @@ export const App = () => {
           <time className="mix-blend-overlay text-[14px] leading-5 font-sub" dateTime="2023-09-12T14:00:00">12.09.2023 / 14:40</time>
         </article>
       </div>
-    </main>
+    </Main>
   );
 };
 

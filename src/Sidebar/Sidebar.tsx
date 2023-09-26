@@ -1,4 +1,4 @@
-import tw from 'tailwind-styled-components';
+import tw from '../helpers/tw';
 import AppIcon from '../components/AppIcon';
 import logoUrl from  "../assets/img/logo.svg";
 
