@@ -1,0 +1,3 @@
+[*.{ts,tsx}]
+indent_style = sapce
+tab_width = 2
