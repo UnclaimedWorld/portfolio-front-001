@@ -1,5 +1,6 @@
-import AppIcon from "../components/AppIcon";
-import tw from "../helpers/tw";
+import AppIcon from "../../components/AppIcon";
+import tw from "../../helpers/tw";
+import { DefaultProps } from "../../types/default-props";
 
 const Section = tw.article`
   flex 
@@ -80,32 +81,43 @@ const NextLetter = tw.span`
   origin-[50%_100%]
 `;
 
-const textArray = 'отправиться туда отправиться туда '.split('');
+const textArray = "отправиться туда отправиться туда ".split("");
 const letterSpacing = 360 / textArray.length;
 
-export default function SectionPreview() {
-    return (
-      <Section>
-        <Image alt="Image" src="/img/temp/image-01.png" />
-        <TextWrap>
-          <TextHeading>
-            Тут мои заметки
-          </TextHeading>
-          <TextDescription>
-            Пишу о всякой хуете касаемо языков программирования и разные конспекты для себя чтобы казаться умнее
-          </TextDescription>
-        </TextWrap>
+interface SectionPreviewType extends DefaultProps {
+  preview: string;
+  name: string;
+  description: string;
+}
 
-        <NextButton>
-          <NextButtonIcon icon="Arrow"/>
-          <NextLettersWrap>
-            {
-              textArray.map((s, idx) => {
-                return <NextLetter key={idx} style={{transform: `translateX(-50%) rotate(${idx * letterSpacing}deg)`, }}>{s}</NextLetter>
-              })
-            }
-          </NextLettersWrap>
-        </NextButton>
-      </Section>
-    )
+export default function SectionPreview(props: SectionPreviewType) {
+  return (
+    <Section>
+      <Image alt="Image" src={props.preview} />
+      <TextWrap>
+        <TextHeading>{props.name}</TextHeading>
+        <TextDescription>{props.description}</TextDescription>
+      </TextWrap>
+
+      <NextButton>
+        <NextButtonIcon icon="Arrow" />
+        <NextLettersWrap>
+          {textArray.map((s, idx) => {
+            return (
+              <NextLetter
+                key={idx}
+                style={{
+                  transform: `translateX(-50%) rotate(${
+                    idx * letterSpacing
+                  }deg)`,
+                }}
+              >
+                {s}
+              </NextLetter>
+            );
+          })}
+        </NextLettersWrap>
+      </NextButton>
+    </Section>
+  );
 }

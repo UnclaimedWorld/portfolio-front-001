@@ -1,45 +1,6 @@
-import tw from '../helpers/tw';
-import AppIcon from '../components/AppIcon';
-import logoUrl from  "../assets/img/logo.svg";
+import tw from '../../helpers/tw';
+import AppIcon from '../../components/AppIcon';
 
-const Aside = tw.aside`
-  flex 
-  shrink-0
-  flex-col 
-  items-start 
-  pl-[20px] 
-  pr-[10px] 
-  py-5 
-  relative 
-  w-[350px]
-`;
-const Logo = tw.img`
-  text-white 
-  w-[75px] 
-  h-5 
-  block 
-  mb-17
-`;
-const Nav = tw.nav``;
-const Ul = tw.ul`
-  flex 
-  flex-col 
-  gap-8
-`;
-const NavItem = tw.li`
-  flex 
-  items-center 
-  gap-[16px]
-`;
-const NavItemIcon = tw(AppIcon)`
-  text-white
-`;
-const NavItemText = tw.p`
-  font-medium 
-  text-[#666] 
-  text-[14px] 
-  leading-5
-`;
 const Timeline = tw.div`
   w-full 
   mt-auto 
@@ -112,41 +73,19 @@ const FooterButtonIcon = tw(AppIcon)`
   mr-2
 `;
 
-const links = [
-  {
-    name: 'Проекты',
-    icon: 'layers',
-    link: '/projects'
-  }
-];
 const currentYear = new Date().getFullYear();
 
-export default function Sidebar() {
+export default function SidebarFooter() {
   return (
-    <Aside>
-      <Logo src={logoUrl} alt="Моё лого"/>
-      <Nav>
-        <Ul>
-          {
-            links.map(link => {
-              return (
-                <NavItem key={link.link}>
-                  <NavItemIcon icon={link.icon}/>
-                  <NavItemText>{link.name}</NavItemText>
-                </NavItem>
-              );
-            })
-          }
-        </Ul>
-      </Nav>
+    <>
       <Timeline>
         <TimelineText>2018</TimelineText>
-        <TimelineSeparator/>
-        <TimelineText>{ currentYear }</TimelineText>
+        <TimelineSeparator />
+        <TimelineText>{currentYear}</TimelineText>
       </Timeline>
       <Footer>
         <FooterHead>
-          <FooterAvatar src="/img/temp/sylvanas.png" alt="Моё фото"/>
+          <FooterAvatar src="/img/temp/sylvanas.png" alt="Моё фото" />
           <FooterHeadingWrap>
             <FooterHeading>Дамир Халимов</FooterHeading>
             <FooterSubheading>Front-end разработчик</FooterSubheading>
@@ -158,10 +97,10 @@ export default function Sidebar() {
           принципов формирования материально-технической и кадровой базы.
         </FooterParagraph>
         <FooterButton>
-          <FooterButtonIcon icon="telegram"/>
+          <FooterButtonIcon icon="telegram" />
           Напишите в телеграм
         </FooterButton>
       </Footer>
-    </Aside>
+    </>
   );
 }
